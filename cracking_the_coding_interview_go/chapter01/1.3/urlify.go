@@ -1,6 +1,10 @@
 package urlify
 
-
+// Function to replace spaces with %20 in strings
+//
+// You are given a string that have sufficient space at the end to hold teh additional characters
+// You are also given the "true" length of the string
+//
 func ReplaceSpaces(str string, trueLength int) string {
 	runes := []rune(str)
 	spaceCount := 0
