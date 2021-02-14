@@ -1,5 +1,5 @@
-use criterion::{black_box, Criterion, criterion_group, criterion_main};
-use cracking_the_coding_interview_rust::chapter01::*;
+use criterion::{Criterion, criterion_group};
+use cracking_the_coding_interview_rust::chapter01::check_permutation;
 
 fn permutation_benchmark(c: &mut Criterion) {
     c.bench_function("Check permutation", |b|
