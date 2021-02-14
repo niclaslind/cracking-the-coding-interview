@@ -1,23 +1,5 @@
 package urlify
 
-func Urlify(s string) string {
-	var returnString string
-	lastSpace := false
-
-	for _, i := range s {
-		if string(i) == " " && lastSpace == false {
-			returnString += "%20"
-			lastSpace = true
-		} else if string(i) == " " && lastSpace == true {
-			// do nothing on this one
-		} else {
-			returnString += string(i)
-			lastSpace = false
-		}
-	}
-
-	return returnString
-}
 
 func ReplaceSpaces(str string, trueLength int) string {
 	runes := []rune(str)
