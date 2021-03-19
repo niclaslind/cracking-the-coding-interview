@@ -1,13 +1,13 @@
-package palindrome_permutation
+package palindromepermutation
 
 import (
-	"fmt"
 	"testing"
 )
 
 func TestIsPalindromePermutation(t *testing.T) {
 	inputString := "Tact Coa"
-	//expectedOuput := []string{"taco cat", "atco cta"}
 
-	fmt.Println(IsPalindromePermutation(inputString))
+	if isPalindromePermutation(inputString) != true {
+		t.Errorf("Should be true")
+	}
 }

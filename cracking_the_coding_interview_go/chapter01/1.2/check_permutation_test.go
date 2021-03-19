@@ -1,4 +1,4 @@
-package check_permutation
+package checkpermutation
 
 import "testing"
 

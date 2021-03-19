@@ -1,4 +1,4 @@
-package is_unique
+package isunique
 
 // Takes a &str and check that all chars is unique
 //

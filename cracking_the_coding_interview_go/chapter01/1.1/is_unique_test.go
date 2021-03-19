@@ -1,4 +1,4 @@
-package is_unique
+package isunique
 
 import "testing"
 

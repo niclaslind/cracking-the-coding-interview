@@ -1,4 +1,4 @@
-package check_permutation
+package checkpermutation
 
 import (
 	"sort"
@@ -13,6 +13,7 @@ func sortString(s string) string {
 	return string(r)
 }
 
+// CheckPermutation -
 // First of all, find out these things: Should the comparison be case sensitive?
 // Example is God a permutation of dog?
 //
@@ -27,6 +28,7 @@ func CheckPermutation(word, permutation string) bool {
 	return sortString(word) == sortString(permutation)
 }
 
+// CheckPermutationEfficient -
 // This function is better if efficient is important, maybe not so readable as the first one
 // regarding assumption, always check about the size of the character set, here we assume it is ASCII
 func CheckPermutationEfficient(word, permutation string) bool {

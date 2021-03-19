@@ -1,7 +1,6 @@
-package palindrome_permutation
+package palindromepermutation
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -11,7 +10,7 @@ import (
 
 // Hash table
 // Solve in O(n)
-func IsPalindromePermutation(s string) bool {
+func isPalindromePermutation(s string) bool {
 	s = strings.ToLower(s)
 
 	//var result []string
@@ -21,18 +20,46 @@ func IsPalindromePermutation(s string) bool {
 		permutations[r]++
 	}
 
-	fmt.Println(permutations)
-
 	return true
 }
 
 // Bit vector
 // Solve in O(n) and reduced space
-func isPalindromePermutation(s string) bool {
+func isPalindromePermutationBitVector(s string) bool {
 	//countOdd := 0
 	//table := []int{'z' - 'a' + 1}
 	//
 	//for _, c := range s {
 	//	x :=
 	//}
+	return true
+}
+
+// Map each character to a number. a -> 0, b -> 1, c -> 2 etc.
+func getCharNumber(r rune) int {
+	c := rune('c')
+	a := rune('a')
+	if a <= c && c <= 'z' {
+		return int(c - a)
+	}
+
+	return -1
+}
+
+func buildCharFrequencyTable(phrase string) []int {
+
+	z := rune('z')
+	a := rune('a')
+
+	table := make([]int, z-a+1)
+
+	for _, c := range phrase {
+		x := getCharNumber(c)
+
+		if x != -1 {
+			table[x]++
+		}
+	}
+
+	return table
 }
