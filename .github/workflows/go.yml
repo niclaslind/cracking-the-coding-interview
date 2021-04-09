@@ -1,5 +1,4 @@
-
-name: Rust
+name: Go
 
 on:
   push:
