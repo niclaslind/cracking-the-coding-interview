@@ -1,5 +1,12 @@
-on: [push, pull_request]
-name: Test
+
+name: Rust
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
 jobs:
   test:
     strategy:
@@ -13,8 +20,8 @@ jobs:
       with:
         go-version: ${{ matrix.go-version }}
     - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Go to right directory
-      run: cd cracking_the_coding_interview_go
+      uses: actions/checkout@v2      
     - name: Test
-      run: go test ./...
+      run: | 
+        cd cracking_the_coding_interview_go
+        go test ./...
