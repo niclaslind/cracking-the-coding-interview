@@ -16,25 +16,25 @@ pub fn replace_spaces(s: &str, true_length: usize) -> String {
     let mut result = s.to_string().into_bytes();
 
     // count white spaces within the "true" length
-    for i in 0..true_length {
-        if result[i] == ' ' as u8 {
+    (0..true_length).for_each(|i| {
+        if result[i] == b' ' {
             space_count += 1;
         }
-    }
+    });
 
     let mut index = true_length + space_count * 2;
 
     // set a null terminator at the end of the true length
     if true_length < s.len() {
-        result[true_length] = '\0' as u8;
+        result[true_length] = b'\0';
     }
 
     // build the output string and replace the whitespaces with %20
     for i in (0..=true_length - 1).rev() {
-        if result[i] == ' ' as u8 {
-            result[index - 1] = '0' as u8;
-            result[index - 2] = '2' as u8;
-            result[index - 3] = '%' as u8;
+        if result[i] == b' ' {
+            result[index - 1] = b'0';
+            result[index - 2] = b'2';
+            result[index - 3] = b'%';
             index -= 3;
         } else {
             result[index - 1] = result[i];
@@ -44,7 +44,6 @@ pub fn replace_spaces(s: &str, true_length: usize) -> String {
 
     String::from(str::from_utf8(&result).unwrap())
 }
-
 
 #[test]
 fn test_replace_spaces() {
