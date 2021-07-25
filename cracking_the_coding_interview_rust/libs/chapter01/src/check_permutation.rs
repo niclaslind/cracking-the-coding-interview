@@ -36,13 +36,13 @@ pub fn check_permutation_efficient(word: &str, permutation: &str) -> bool {
 }
 
 #[cfg(test)]
-mod test {
+mod tests {
     use super::*;
 
     #[test]
     fn test_permutation() {
-        assert_eq!(check_permutation("hello", "olleh"), true);
-        assert_eq!(check_permutation("west", "hest"), false);
+        assert_eq!(check_permutation("cat", "tac"), true);
+        assert_eq!(check_permutation("cat", "bar"), false);
     }
 
     #[test]

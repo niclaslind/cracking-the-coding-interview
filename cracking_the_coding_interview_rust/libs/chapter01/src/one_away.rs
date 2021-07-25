@@ -1,3 +1,9 @@
+/// There are three types of edits that can be performed on strings:
+/// insert a character, remove a character, or replace a character
+/// Given two strings, write a function to check if they are one edit (or zero edits away)
+/// Both [one_edit_away] and [one_edit_replace] takes O(n) time,
+/// where n is the length of the shorter string
+
 /// Compare two strings and see if they match
 pub fn one_edit_away(s1: &str, s2: &str) -> bool {
     if s1.len() == s2.len() {
