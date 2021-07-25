@@ -48,14 +48,19 @@ pub fn is_unique_chars_bit(word: &str) -> bool {
     true
 }
 
-#[test]
-fn test_is_unique() {
-    assert_eq!(is_unique("Hej"), true);
-    assert_eq!(is_unique("Hello"), false);
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-fn test_is_unique_chars_bit() {
-    assert_eq!(is_unique_chars_bit("hej"), true);
-    assert_eq!(is_unique_chars_bit("hello"), false);
+    #[test]
+    fn test_is_unique() {
+        assert_eq!(is_unique("Hej"), true);
+        assert_eq!(is_unique("Hello"), false);
+    }
+
+    #[test]
+    fn test_is_unique_chars_bit() {
+        assert_eq!(is_unique_chars_bit("hej"), true);
+        assert_eq!(is_unique_chars_bit("hello"), false);
+    }
 }

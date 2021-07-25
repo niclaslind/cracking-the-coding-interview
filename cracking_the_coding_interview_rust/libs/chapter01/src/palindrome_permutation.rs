@@ -22,7 +22,7 @@ pub fn is_permutation_of_palindrome_optimized(phrase: &str) -> bool {
     const A: i32 = 'a' as i32;
     let mut table: Vec<i32> = vec![-1; (Z - A + 1) as usize];
 
-    for c in phrase.chars() {
+    phrase.chars().for_each(|c| {
         let x = get_char_number(c);
         if x != -1 {
             table[x as usize] += 1;
@@ -32,7 +32,7 @@ pub fn is_permutation_of_palindrome_optimized(phrase: &str) -> bool {
                 count_odd -= 1;
             }
         }
-    }
+    });
     count_odd <= 1
 }
 
@@ -63,6 +63,7 @@ fn get_char_number(c: char) -> i32 {
     // change type here from char to i32
     let c = c as i32;
     let a = 'a' as i32;
+
     if a as i32 <= c && c <= 'z' as i32 {
         return c - a;
     }
@@ -76,13 +77,13 @@ fn build_char_frequency_table(phrase: &str) -> Vec<i32> {
     const A: i32 = 'a' as i32;
     let mut table: Vec<i32> = vec![-1; (Z - A + 1) as usize];
 
-    for c in phrase.chars() {
+    phrase.chars().for_each(|c| {
         let x = get_char_number(c);
 
         if x != -1 {
             table[x as usize] += 1;
         }
-    }
+    });
 
     table.to_vec()
 }
@@ -91,10 +92,10 @@ fn build_char_frequency_table(phrase: &str) -> Vec<i32> {
 fn create_bit_vector(phrase: &str) -> i32 {
     let mut bit_vector = 0;
 
-    for c in phrase.chars() {
+    phrase.chars().for_each(|c| {
         let x = get_char_number(c);
         bit_vector = toggle(bit_vector, x);
-    }
+    });
 
     bit_vector
 }
@@ -123,18 +124,23 @@ fn check_exactly_one_bitset(bit_vector: i32) -> bool {
     (bit_vector & (bit_vector - 1)) == 0
 }
 
-#[test]
-fn test_is_permutation_of_palindrome() {
-    assert_eq!(true, is_permutation_of_palindrome("Tact Coa"));
-}
+#[cfg(test)]
+mod tests {
+    use super::*;
 
-#[test]
-fn test_is_permutation_of_palindrome_optimized() {
-    assert_eq!(true, is_permutation_of_palindrome_optimized("Tact Coa"));
-}
+    #[test]
+    fn test_is_permutation_of_palindrome() {
+        assert_eq!(true, is_permutation_of_palindrome("Tact Coa"));
+    }
 
-#[test]
-fn test_is_permutation_of_palindrome_bit_vector() {
-    // todo: Change this, should be true....
-    assert_eq!(false, is_permutation_of_palindrome_bit_vector("Tact Coa"));
+    #[test]
+    fn test_is_permutation_of_palindrome_optimized() {
+        assert_eq!(true, is_permutation_of_palindrome_optimized("Tact Coa"));
+    }
+
+    #[test]
+    fn test_is_permutation_of_palindrome_bit_vector() {
+        // todo: Change this, should be true....
+        assert_eq!(false, is_permutation_of_palindrome_bit_vector("Tact Coa"));
+    }
 }

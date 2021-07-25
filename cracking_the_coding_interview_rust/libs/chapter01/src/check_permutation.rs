@@ -10,7 +10,8 @@ pub fn check_permutation(word: &str, permutation: &str) -> bool {
         return false;
     }
 
-    word.chars().sorted().rev().collect::<String>() == permutation.chars().sorted().rev().collect::<String>()
+    word.chars().sorted().rev().collect::<String>()
+        == permutation.chars().sorted().rev().collect::<String>()
 }
 
 /// This function is better if efficient is important, maybe not so readable as the first function
@@ -26,21 +27,26 @@ pub fn check_permutation_efficient(word: &str, permutation: &str) -> bool {
         letters[ch as usize] += 1;
     });
 
-    for i in 0..permutation.len() {
+    (0..permutation.len()).for_each(|i| {
         let c = permutation.chars().nth(i).unwrap();
         letters[c as usize] -= 1;
-    }
+    });
 
     true
 }
 
-#[test]
-fn test_permutation() {
-    assert_eq!(check_permutation("hello", "olleh"), true);
-    assert_eq!(check_permutation("west", "hest"), false);
-}
+#[cfg(test)]
+mod test {
+    use super::*;
 
-#[test]
-fn test_permutation_efficient() {
-    assert_eq!(check_permutation_efficient("hello", "olleh"), true)
+    #[test]
+    fn test_permutation() {
+        assert_eq!(check_permutation("hello", "olleh"), true);
+        assert_eq!(check_permutation("west", "hest"), false);
+    }
+
+    #[test]
+    fn test_permutation_efficient() {
+        assert_eq!(check_permutation_efficient("hello", "olleh"), true)
+    }
 }

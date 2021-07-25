@@ -30,7 +30,7 @@ pub fn replace_spaces(s: &str, true_length: usize) -> String {
     }
 
     // build the output string and replace the whitespaces with %20
-    for i in (0..=true_length - 1).rev() {
+    (0..=true_length - 1).rev().for_each(|i| {
         if result[i] == b' ' {
             result[index - 1] = b'0';
             result[index - 2] = b'2';
@@ -40,7 +40,7 @@ pub fn replace_spaces(s: &str, true_length: usize) -> String {
             result[index - 1] = result[i];
             index -= 1;
         }
-    }
+    });
 
     String::from(str::from_utf8(&result).unwrap())
 }
