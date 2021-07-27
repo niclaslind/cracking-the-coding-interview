@@ -2,7 +2,6 @@
 mod check_permutation;
 mod is_unique;
 
-
 mod one_away;
 mod palindrome_permutation;
 
