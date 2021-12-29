@@ -1,17 +1,16 @@
-#![allow(dead_code)]
 #![feature(linked_list_remove)]
 
-use std::{borrow::BorrowMut, rc::Rc};
+use std::rc::Rc;
 
 /// Write code to remove duplicates from an unsorted linked list
 ///
 /// FOLLOW UP:
 ///
 /// How would you solve this problem if a temporary buffer is not allowed?
-mod remove_duplicates;
+pub mod remove_duplicates;
 
 /// Implement an algorigthm to find the kth to last element of a singly linked list.
-mod return_kth_to_last;
+pub mod return_kth_to_last;
 
 /// Implement an algorigthm to delete a node in the middle (i.e. any node but the first and last node,
 /// not necessarily teh middle) of a singly linked list, given only access to that node.
@@ -22,7 +21,7 @@ mod return_kth_to_last;
 ///
 /// Result: nothing is returned, but the new linked list looks like
 /// a->b->d->e->f
-mod delete_middle_node;
+pub mod delete_middle_node;
 
 type Link<T> = Option<Rc<Node<T>>>;
 
@@ -34,7 +33,7 @@ pub struct Node<T> {
 }
 
 impl<T> Node<T> {
-    fn new(data: T, next: Link<T>) -> Self {
+    pub fn new(data: T, next: Link<T>) -> Self {
         Self {
             data,
             next,
@@ -42,11 +41,11 @@ impl<T> Node<T> {
         }
     }
 
-    fn tail(node: &Link<T>) -> Link<T> {
+    pub fn tail(node: &Link<T>) -> Link<T> {
         if let Some(current) = node.clone().unwrap().next.as_ref().cloned() {
             return Node::tail(&Some(current));
         }
-        Some(node.clone().unwrap().clone())
+        Some(node.clone().unwrap())
     }
 }
 
@@ -55,17 +54,19 @@ pub struct List<T> {
 }
 
 impl<T> List<T> {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Self { head: None }
     }
 
-    fn prepend(&self, data: T) -> List<T> {
+    #[must_use]
+    pub fn prepend(&self, data: T) -> List<T> {
         let head = Some(Rc::new(Node::new(data, self.head.clone())));
 
         List { head }
     }
 
-    fn tail(&self) -> List<T> {
+    #[must_use]
+    pub fn tail(&self) -> List<T> {
         let head = self.head.as_ref().and_then(|node| node.next.clone());
         List { head }
     }
@@ -78,6 +79,12 @@ impl<T> List<T> {
         Iter {
             next: self.head.as_deref(),
         }
+    }
+}
+
+impl<T> Default for List<T> {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
