@@ -3,26 +3,26 @@ use std::{
     i32::MIN,
 };
 
-fn remove_duplicates(list: &mut LinkedList<i32>) {
+pub fn remove_duplicates(list: &mut LinkedList<i32>) {
     let mut set = HashSet::<i32>::new();
 
     list.clone().iter().enumerate().for_each(|(index, data)| {
-        if set.contains(&data) {
+        if set.contains(data) {
             list.remove(index);
         } else {
-            set.insert(data.clone());
+            set.insert(*data);
         }
     });
 }
 
-fn remove_duplicates_without_buffer(list: &mut LinkedList<i32>) {
+pub fn remove_duplicates_without_buffer(list: &mut LinkedList<i32>) {
     let mut current_data: i32 = MIN;
 
     list.clone()
         .iter_mut()
         .enumerate()
         .for_each(|(_index, data)| {
-            current_data = data.clone();
+            current_data = *data;
         });
 }
 
