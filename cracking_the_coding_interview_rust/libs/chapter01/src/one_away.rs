@@ -53,8 +53,8 @@ fn one_edit_insert(s1: &str, s2: &str) -> bool {
 
 #[test]
 fn test_check_strings() {
-    assert_eq!(true, one_edit_away("pale", "ple"));
-    assert_eq!(true, one_edit_away("pales", "pale"));
-    assert_eq!(true, one_edit_away("pale", "bale"));
-    assert_eq!(false, one_edit_away("pale", "bake"))
+    assert!(one_edit_away("pale", "ple"));
+    assert!(one_edit_away("pales", "pale"));
+    assert!(one_edit_away("pale", "bale"));
+    assert!(!one_edit_away("pale", "bake"))
 }
