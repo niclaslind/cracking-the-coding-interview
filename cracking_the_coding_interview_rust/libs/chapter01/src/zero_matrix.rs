@@ -6,8 +6,8 @@ fn zero_matrix(matrix: &Matrix) -> Matrix {
     (0..matrix.len()).for_each(|layer| {
         (0..matrix[layer].len()).for_each(|col| {
             if matrix[layer][col] == 0 {
-                for i in 0..matrix.len() {
-                    result[i][col] = 0;
+                for item in result.iter_mut().take(matrix.len()){
+                    item[col] = 0;
                 }
 
                 for i in 0..matrix[layer].len() {

@@ -10,6 +10,6 @@ mod tests {
 
     #[test]
     fn test_string_rotation() {
-        assert_eq!(is_rotated_string("waterbottle", "erbottlewat"), true);
+        assert!(is_rotated_string("waterbottle", "erbottlewat"));
     }
 }

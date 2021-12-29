@@ -130,17 +130,17 @@ mod tests {
 
     #[test]
     fn test_is_permutation_of_palindrome() {
-        assert_eq!(true, is_permutation_of_palindrome("Tact Coa"));
+        assert!(is_permutation_of_palindrome("Tact Coa"));
     }
 
     #[test]
     fn test_is_permutation_of_palindrome_optimized() {
-        assert_eq!(true, is_permutation_of_palindrome_optimized("Tact Coa"));
+        assert!(is_permutation_of_palindrome_optimized("Tact Coa"));
     }
 
     #[test]
     fn test_is_permutation_of_palindrome_bit_vector() {
-        // todo: Change this, should be true....
-        assert_eq!(false, is_permutation_of_palindrome_bit_vector("Tact Coa"));
+        // TODO: Change this, should be true....
+        assert!(is_permutation_of_palindrome_bit_vector("Tact Coa"));
     }
 }
