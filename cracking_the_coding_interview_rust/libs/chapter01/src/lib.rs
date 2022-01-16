@@ -1,9 +1,9 @@
 #![allow(dead_code)]
-mod check_permutation;
-mod is_unique;
+pub mod check_permutation;
+pub mod is_unique;
 
-mod one_away;
-mod palindrome_permutation;
+pub mod one_away;
+pub mod palindrome_permutation;
 
 /// Given an image represented by an NxN matrix, where each pixel in the image is 4 bytes,
 /// write a method to rotate the image by 90 degrees. Can you do this in place?

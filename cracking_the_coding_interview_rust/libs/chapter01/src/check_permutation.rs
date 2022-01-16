@@ -15,7 +15,7 @@ pub fn check_permutation(word: &str, permutation: &str) -> bool {
 }
 
 /// This function is better if efficient is important, maybe not so readable as the first function
-/// regarding the assumption, always check about he size of the character set, here we assuming it's ASCII
+/// regarding the assumption, always check about the size of the character set, here we assuming it's ASCII
 pub fn check_permutation_efficient(word: &str, permutation: &str) -> bool {
     if word.len() != permutation.len() {
         return false;
@@ -41,12 +41,12 @@ mod tests {
 
     #[test]
     fn test_permutation() {
-        assert_eq!(check_permutation("cat", "tac"), true);
-        assert_eq!(check_permutation("cat", "bar"), false);
+        assert!(check_permutation("cat", "tac"));
+        assert!(!check_permutation("cat", "bar"));
     }
 
     #[test]
     fn test_permutation_efficient() {
-        assert_eq!(check_permutation_efficient("hello", "olleh"), true)
+        assert!(check_permutation_efficient("hello", "olleh"));
     }
 }
