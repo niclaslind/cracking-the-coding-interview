@@ -7,7 +7,7 @@ updates:
     timezone: Europe/Stockholm
   open-pull-requests-limit: 10
 - package-ecosystem: gomod
-  directory: "/cracking_the_code_interview_go"
+  directory: "/cracking_the_coding_interview_go"
   schedule:
     interval: daily
     timezone: Europe/Stockholm
