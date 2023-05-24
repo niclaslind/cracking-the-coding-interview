@@ -10,7 +10,7 @@ edition = "2021"
 itertools = "0.10.3"
 
 [dev-dependencies]
-criterion = "0.4"
+criterion = "0.5"
 
 [[bench]]
 name = "chapter01_bench"
